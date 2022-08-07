@@ -4,7 +4,9 @@ import './style.css'
 
 export default class App extends React.Component{
   constructor(){
+    // Calls Component's constructor
     super()
+    // Set state.
     this.state = {
       boxArray: boxes
     }
@@ -16,6 +18,7 @@ export default class App extends React.Component{
     });
   }
 
+  // Gets called everytime the component is to be rendered
   render(){
     let squares = this.state.boxArray.map(box => {
       return <div className="box" key={box.id}></div>
