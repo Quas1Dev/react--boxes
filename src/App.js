@@ -3,9 +3,9 @@ import boxes from "./boxes.js"
 import './style.css'
 
 export default class App extends React.Component{
-  constructor(){
+  constructor(props){
     // Calls Component's constructor
-    super()
+    super(props)
     // Set state.
     this.state = {
       boxArray: boxes
@@ -20,8 +20,12 @@ export default class App extends React.Component{
 
   // Gets called everytime the component is to be rendered
   render(){
+    let style = {
+      backgroundColor: this.props.darkMode ? "#222222" : "#cccccc"
+    }
+
     let squares = this.state.boxArray.map(box => {
-      return <div className="box" key={box.id}></div>
+      return <div style={style} className="box" key={box.id}></div>
     })
 
     /**

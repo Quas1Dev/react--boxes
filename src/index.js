@@ -5,5 +5,5 @@ import App from "./app"
 let root = ReactDOM.createRoot(document.getElementById("root"))
 
 root.render(
-  <App />
+  <App darkMode={false}/>
 )
