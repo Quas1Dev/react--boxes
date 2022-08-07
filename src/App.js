@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import boxes from "./boxes.js"
+import './style.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      boxArray: boxes
+    }
+  }
+
+  handleClick(){
+    this.setState({
+      boxArray: boxes
+    });
+  }
+
+  render(){
+    let squares = this.state.boxArray.map(box => {
+      return <div className="box" key={box.id}></div>
+    })
+
+    /**
+     * Challenge part 1:
+     * 1. Initialize state with the default value of the
+     *    array pulled in from boxes.js
+     * 2. Map over that state array and display each one
+     *    as an empty square (black border, transparent bg color)
+     *    (Don't worry about using the "on" property yet)
+     */
+    return (
+      <main>
+        {squares}
+      </main>
+    )
+  }
 }
-
-export default App;
