@@ -1,41 +1,34 @@
 import React from "react"
 import boxes from "./boxes.js"
+import Box from "./box"
 import './style.css'
 
 export default class App extends React.Component{
   constructor(props){
     // Calls Component's constructor
     super(props)
-    // Set state.
+
+    // Set initial states value
     this.state = {
       boxArray: boxes
     }
   }
-
-  handleClick(){
+  // Change boxArray state each time a box gets clicked
+  // It is not done in the components itself so we don't create two sources of
+  // truth
+  handleClick = (id) => {
     this.setState({
-      boxArray: boxes
+      boxArray: this.state.boxArray.map(box => box.id === id ? {...box, on: !box.on} : box)
     });
   }
 
   // Gets called everytime the component is to be rendered
   render(){
-    let style = {
-      backgroundColor: this.props.darkMode ? "#222222" : "#cccccc"
-    }
-
+    // Create a Box component for each element in boxArray
     let squares = this.state.boxArray.map(box => {
-      return <div style={style} className="box" key={box.id}></div>
+      return <Box key={box.id} on={box.on} id={box.id} onClick={this.handleClick}/>
     })
 
-    /**
-     * Challenge part 1:
-     * 1. Initialize state with the default value of the
-     *    array pulled in from boxes.js
-     * 2. Map over that state array and display each one
-     *    as an empty square (black border, transparent bg color)
-     *    (Don't worry about using the "on" property yet)
-     */
     return (
       <main>
         {squares}
