@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
     {
         id: 1,
@@ -13,7 +14,7 @@ export default [
     },
     {
         id: 4,
-        on: true
+        on: false
     },
     {
         id: 5,
